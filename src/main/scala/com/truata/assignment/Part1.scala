@@ -8,7 +8,7 @@ object Part1 {
 
   private val DATASET_PATH = "src/main/resources/part_1/groceries.csv"
 
-  def solveTasks(implicit sc: SparkContext): Unit = {
+  def solveTasks(sc: SparkContext): Unit = {
     val lines = sc.textFile(DATASET_PATH)
 
     // Task 2

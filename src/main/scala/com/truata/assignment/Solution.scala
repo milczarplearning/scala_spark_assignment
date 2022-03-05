@@ -7,9 +7,8 @@ object Solution {
 
   def main(args: Array[String]): Unit = {
     val spark = SparkUtils.getSpark
-    implicit val sparContext: SparkContext = spark.sparkContext
-    Part1.solveTasks
-
+    Part1.solveTasks(spark.sparkContext)
+    Part2.solveTasks(spark)
 
   }
 }
