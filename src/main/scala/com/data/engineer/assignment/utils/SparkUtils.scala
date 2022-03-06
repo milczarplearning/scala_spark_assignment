@@ -1,6 +1,6 @@
-package com.truata.assignment.utils
+package com.data.engineer.assignment.utils
 
-import org.apache.spark.sql.{Dataset, Row, SaveMode, SparkSession}
+import org.apache.spark.sql.{DataFrame, Dataset, Row, SaveMode, SparkSession}
 
 object SparkUtils {
 
@@ -18,8 +18,12 @@ object SparkUtils {
       .csv(path)
   }
 
-  def writeSingleValue(path: String, df: Dataset[Row]): Unit = {
+  def writeSingleValue(path: String, df: DataFrame): Unit = {
     df.toString()
+  }
+
+  def writeDataFrameToTxt(path:String, df:DataFrame):Unit = {
+
   }
 
 

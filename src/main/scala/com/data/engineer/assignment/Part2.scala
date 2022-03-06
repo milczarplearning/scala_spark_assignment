@@ -1,6 +1,6 @@
-package com.truata.assignment
+package com.data.engineer.assignment
 
-import com.truata.assignment.utils.SparkUtils
+import com.data.engineer.assignment.utils.SparkUtils
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions._
@@ -33,7 +33,7 @@ object Part2 {
     SparkUtils.writeCsv("out/out_2_3.txt", task3Result)
 
 
-    // How many people can be accomodated by the property with the lowest price and highest rating?
+    // How many people can be accommodated by the property with the lowest price and highest rating?
     val windowSpec = Window.orderBy('price, 'review_scores_rating.desc)
     val task4Result = df.withColumn("rank", dense_rank().over(windowSpec))
       .where('rank === 1)

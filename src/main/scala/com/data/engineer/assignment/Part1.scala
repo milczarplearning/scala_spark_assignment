@@ -1,6 +1,6 @@
-package com.truata.assignment
+package com.data.engineer.assignment
 
-import com.truata.assignment.utils.IOUtils
+import com.data.engineer.assignment.utils.IOUtils
 import org.apache.spark.SparkContext
 import org.apache.spark.rdd.RDD
 

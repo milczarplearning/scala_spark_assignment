@@ -1,4 +1,4 @@
-package com.truata.assignment.utils
+package com.data.engineer.assignment.utils
 
 import java.io.{File, FileWriter}
 import scala.util.Try
