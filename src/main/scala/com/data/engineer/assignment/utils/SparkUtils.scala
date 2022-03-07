@@ -4,7 +4,6 @@ import org.apache.spark.sql._
 
 object SparkUtils {
 
-
   def getSpark: SparkSession = SparkSession
     .builder()
     .appName("TruataAssignment")
