@@ -4,7 +4,6 @@ import com.data.engineer.assignment.utils.SparkUtils
 import org.apache.spark.ml.Pipeline
 import org.apache.spark.ml.classification.LogisticRegression
 import org.apache.spark.ml.feature.{IndexToString, StringIndexer, VectorAssembler}
-import org.apache.spark.sql.functions.col
 import org.apache.spark.sql.types.{DoubleType, StringType, StructField, StructType}
 import org.apache.spark.sql.{DataFrame, SparkSession}
 

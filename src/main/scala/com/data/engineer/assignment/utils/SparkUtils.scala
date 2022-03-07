@@ -2,8 +2,6 @@ package com.data.engineer.assignment.utils
 
 import org.apache.spark.sql._
 
-import scala.util.Try
-
 object SparkUtils {
 
 
