@@ -1,18 +1,16 @@
-package com.data.engineer.assignment
+package com.data.engineer.assignment.parts
 
 import com.data.engineer.assignment.utils.SparkUtils
 import org.apache.spark.sql.SparkSession
 import org.apache.spark.sql.expressions.Window
 import org.apache.spark.sql.functions._
 
-object Part2 {
-
-  private val DATASET_PATH = "src/main/resources/part_2/airbnb.snappy.parquet"
+class Part2(spark: SparkSession, datasetPath: String) {
 
 
-  def solveTasks(spark: SparkSession): Unit = {
+  def solveTasks(): Unit = {
 
-    val df = spark.read.parquet(DATASET_PATH)
+    val df = spark.read.parquet(datasetPath)
 
     val task2Result = df.select(
       min("price").as("min_price"),
@@ -20,7 +18,7 @@ object Part2 {
       count("price").as("row_count")
     )
 
-    SparkUtils.writeCsv("out/out_2_2.txt", task2Result)
+    SparkUtils.writeDataFrameCsvTxt("out/out_2_2.txt", task2Result)
 
 
     import spark.implicits._
@@ -30,7 +28,7 @@ object Part2 {
         avg("bedrooms").as("average_bedrooms_count"),
       )
 
-    SparkUtils.writeCsv("out/out_2_3.txt", task3Result)
+    SparkUtils.writeDataFrameCsvTxt("out/out_2_3.txt", task3Result)
 
 
     // How many people can be accommodated by the property with the lowest price and highest rating?
@@ -39,7 +37,7 @@ object Part2 {
       .where('rank === 1)
       .select(sum('accommodates))
 
-    SparkUtils.writeSingleValue("out/out_2_4.txt", task4Result)
+    SparkUtils.writeDataFrameCsvTxt("out/out_2_4.txt", task4Result, header = false)
 
   }
 }

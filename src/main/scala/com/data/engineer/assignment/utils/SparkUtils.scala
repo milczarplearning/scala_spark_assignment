@@ -1,8 +1,11 @@
 package com.data.engineer.assignment.utils
 
-import org.apache.spark.sql.{DataFrame, Dataset, Row, SaveMode, SparkSession}
+import org.apache.spark.sql._
+
+import scala.util.Try
 
 object SparkUtils {
+
 
   def getSpark: SparkSession = SparkSession
     .builder()
@@ -18,13 +21,18 @@ object SparkUtils {
       .csv(path)
   }
 
-  def writeSingleValue(path: String, df: DataFrame): Unit = {
-    df.toString()
+  def writeDataFrameCsvTxt(path: String, df: Dataset[Row], header: Boolean = true): Unit = {
+    val rows = df.collect()
+      .map(row => row.toSeq.mkString(","))
+      .mkString("\n")
+    val result = if (header) StringBuilder.newBuilder.append(df.columns.mkString(","))
+      .append("\n")
+      .append(rows)
+      .result()
+    else
+      rows
+
+    IOUtils.writeToFile(path, result)
   }
-
-  def writeDataFrameToTxt(path:String, df:DataFrame):Unit = {
-
-  }
-
 
 }
