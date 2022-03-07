@@ -24,8 +24,8 @@ class Part2(spark: SparkSession, datasetPath: String) {
     import spark.implicits._
     val task3Result = df.where('price > 5000.0 and 'review_scores_value === 10.0)
       .select(
-        avg("bathrooms").as("average_bathrooms_count"),
-        avg("bedrooms").as("average_bedrooms_count"),
+        avg("bathrooms").as("avg_bathrooms"),
+        avg("bedrooms").as("avg_bedrooms"),
       )
 
     SparkUtils.writeDataFrameCsvTxt("out/out_2_3.txt", task3Result)

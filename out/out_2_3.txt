@@ -1,2 +1,2 @@
-average_bathrooms_count,average_bedrooms_count
+avg_bathrooms,avg_bedrooms
 2.375,3.0
