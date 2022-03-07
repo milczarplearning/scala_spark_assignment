@@ -1,5 +1,6 @@
 package com.data.engineer.assignment.parts
 
+import com.data.engineer.assignment.parts.Part3._
 import com.data.engineer.assignment.utils.SparkUtils
 import org.apache.spark.ml.Pipeline
 import org.apache.spark.ml.classification.LogisticRegression
@@ -8,12 +9,6 @@ import org.apache.spark.sql.types.{DoubleType, StringType, StructField, StructTy
 import org.apache.spark.sql.{DataFrame, SparkSession}
 
 class Part3(spark: SparkSession, datasetPath: String) {
-
-  private val FeatureColumnNames = Seq("sepal_length", "sepal_width", "petal_length", "petal_width")
-  private val ClassColumnName = "class"
-
-  private val ModelLabelName = "label"
-  private val ModelFeaturesColumnName = "features"
 
   def solveTasks(): Unit = {
     val trainingDataFrame = loadDataFrame(spark, datasetPath)
@@ -73,4 +68,11 @@ class Part3(spark: SparkSession, datasetPath: String) {
 
     (pipelineModel, indexer) // returning a tuple is not so clean but I cannot think of anything better
   }
+}
+
+object Part3{
+  private val FeatureColumnNames = Seq("sepal_length", "sepal_width", "petal_length", "petal_width")
+  private val ClassColumnName = "class"
+  private val ModelLabelName = "label"
+  private val ModelFeaturesColumnName = "features"
 }
